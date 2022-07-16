@@ -11,3 +11,11 @@ services:
     ports:
       - '3000:3000'
     tty: true
+  
+  back:
+    build: ./docker/json-server
+    volumes: 
+      - ./docker/json-server/db.json:/data/db.json
+    command: json-server --watch db.json --port 3000 --host 0.0.0.0
+    ports:
+      - '3001:3000'

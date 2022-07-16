@@ -1,0 +1,36 @@
+{
+  "memos": [
+    {
+      "id": 1,
+      "title": "今日の晩御飯",
+      "categoryId": 1,
+      "contents": "今日はカレーにしよう。"
+    },
+    {
+      "id": 2,
+      "title": "面接の技術課題何からやろうかな",
+      "categoryId": 2,
+      "contents": "まずはデザインから考えようかな"
+    },
+    {
+      "id": 3,
+      "title": "7月22日に芝刈りしよう",
+      "categoryId": 3,
+      "contents": ""
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "お気に入り"
+    },
+    {
+      "id": 2,
+      "name": "作業中"
+    },
+    {
+      "id": 3,
+      "name": "アーカイブ"
+    }
+  ]
+}
