@@ -1,36 +1,36 @@
 {
-  "memos": [
+  "Memos": [
     {
-      "id": 1,
-      "title": "今日の晩御飯",
-      "categoryId": 1,
-      "contents": "今日はカレーにしよう。"
+      "Id": 1,
+      "Title": "今日の晩御飯",
+      "CategoryId": 1,
+      "Contents": "今日はカレーにしよう。"
     },
     {
-      "id": 2,
-      "title": "面接の技術課題何からやろうかな",
-      "categoryId": 2,
-      "contents": "まずはデザインから考えようかな"
+      "Id": 2,
+      "Title": "面接の技術課題何からやろうかな",
+      "CategoryId": 2,
+      "Contents": "まずはデザインから考えようかな"
     },
     {
-      "id": 3,
-      "title": "7月22日に芝刈りしよう",
-      "categoryId": 3,
-      "contents": ""
+      "Id": 3,
+      "Title": "7月22日に芝刈りしよう",
+      "CategoryId": 3,
+      "Contents": ""
     }
   ],
-  "categories": [
+  "Categories": [
     {
-      "id": 1,
-      "name": "お気に入り"
+      "Id": 1,
+      "Name": "お気に入り"
     },
     {
-      "id": 2,
-      "name": "作業中"
+      "Id": 2,
+      "Name": "作業中"
     },
     {
-      "id": 3,
-      "name": "アーカイブ"
+      "Id": 3,
+      "Name": "アーカイブ"
     }
   ]
 }

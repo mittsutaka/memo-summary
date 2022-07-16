@@ -5,6 +5,7 @@ services:
     build: ./docker/front
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=local
     volumes:
       - ./front:/usr/src/app
     command: sh -c 'yarn start'
