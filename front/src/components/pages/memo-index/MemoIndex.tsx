@@ -2,12 +2,11 @@ import React from "react";
 import Layout from "../../layouts/layout/Layout";
 
 type Props = {
-  name: string;
   className?: string;
 };
 
-const MemoIndex: React.FC<Props> = ({ name }) => {
-  return <Layout>{name}</Layout>
+const MemoIndex: React.FC<Props> = () => {
+  return <Layout></Layout>
 };
 
 export default MemoIndex;
