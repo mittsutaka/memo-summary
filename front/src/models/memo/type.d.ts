@@ -5,4 +5,5 @@ export type Memo = {
   Title: string;
   Category: Category;
   Contents?: string;
+  UpdatedAt: string;
 };

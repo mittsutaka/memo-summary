@@ -4,4 +4,4 @@ RUN npm install -g json-server
 
 WORKDIR /data
 
-EXPOSE 3000
+EXPOSE 3001
