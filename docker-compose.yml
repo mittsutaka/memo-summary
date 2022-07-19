@@ -8,7 +8,7 @@ services:
       - NODE_ENV=local
     volumes:
       - ./front:/usr/src/app
-    command: sh -c 'yarn start'
+    command: npm start
     ports:
       - '3000:3000'
     tty: true
@@ -20,3 +20,4 @@ services:
     command: json-server --watch db.json --port 3001 --host 0.0.0.0
     ports:
       - '3001:3001'
+    tty: true
