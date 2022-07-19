@@ -1,6 +1,8 @@
+import { Category } from "../category/type";
+
 export type Memo = {
   Id: number;
   Title: string;
-  CategoryId: number;
+  Category: Category;
   Contents?: string;
 };

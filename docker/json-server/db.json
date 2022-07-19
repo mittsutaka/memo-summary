@@ -3,34 +3,55 @@
     {
       "Id": 1,
       "Title": "今日の晩御飯",
-      "CategoryId": 1,
+      "Category": {
+        "Id": 1,
+        "Name": "お気に入り",
+        "BackgoundColorCode": "#FFF000",
+        "ColorCode": "#333333"
+      },
       "Contents": "今日はカレーにしよう。"
     },
     {
       "Id": 2,
       "Title": "面接の技術課題何からやろうかな",
-      "CategoryId": 2,
+      "Category": {
+        "Id": 2,
+        "Name": "作業中",
+        "BackgoundColorCode": "#629460",
+        "ColorCode": "#FFFFFF"
+      },
       "Contents": "まずはデザインから考えようかな"
     },
     {
       "Id": 3,
       "Title": "7月22日に芝刈りしよう",
-      "CategoryId": 3,
+      "Category": {
+        "Id": 3,
+        "Name": "アーカイブ",
+        "BackgoundColorCode": "#DE3C3C",
+        "ColorCode": "#FFFFFF"
+      },
       "Contents": ""
     }
   ],
   "Categories": [
     {
       "Id": 1,
-      "Name": "お気に入り"
+      "Name": "お気に入り",
+      "BackgoundColorCode": "#FFF000",
+      "ColorCode": "#333333"
     },
     {
       "Id": 2,
-      "Name": "作業中"
+      "Name": "作業中",
+      "BackgoundColorCode": "#629460",
+      "ColorCode": "#FFFFFF"
     },
     {
       "Id": 3,
-      "Name": "アーカイブ"
+      "Name": "アーカイブ",
+      "BackgoundColorCode": "#DE3C3C",
+      "ColorCode": "#FFFFFF"
     }
   ]
 }
