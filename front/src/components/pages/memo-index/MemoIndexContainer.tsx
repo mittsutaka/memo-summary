@@ -1,23 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MemoIndex from "./MemoIndex";
-import axios, { AxiosResponse } from "axios";
 import { Memo } from "../../../models/memo/type";
+import useFetch from "../../../hooks/useFecth";
 
 const endPoint = `${process.env.REACT_APP_BACKEND_END_POINT}/memos`;
 
 const MemoIndexContainer: React.FC = () => {
-  const [memos, setMemos] = React.useState<Memo[]>([]);
 
-  const getMemos = async () => {
-    const response: AxiosResponse<Memo[]> = await axios.get(endPoint);
-    setMemos(response.data);
-  };
+  const { data, error } = useFetch<Memo[]>(endPoint);
 
-  useEffect(() => {
-    getMemos();
-  }, []);
-
-  return <MemoIndex memos={memos} className="text-3xl font-bold underline"></MemoIndex>;
+  if (data) {
+    return <MemoIndex memos={data} className="text-3xl font-bold underline"></MemoIndex>;
+  }
+  return <></>
 };
 
 export default MemoIndexContainer;

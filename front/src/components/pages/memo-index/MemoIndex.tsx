@@ -8,7 +8,6 @@ type Props = {
 };
 
 const MemoIndex: React.FC<Props> = ({ memos }) => {
-  console.log(memos);
   return (
     <Layout>
       {memos.map((memo) => {
