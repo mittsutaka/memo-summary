@@ -17,6 +17,6 @@ services:
     build: ./docker/json-server
     volumes: 
       - ./docker/json-server/db.json:/data/db.json
-    command: json-server --watch db.json --port 3000 --host 0.0.0.0
+    command: json-server --watch db.json --port 3001 --host 0.0.0.0
     ports:
-      - '3001:3000'
+      - '3001:3001'
