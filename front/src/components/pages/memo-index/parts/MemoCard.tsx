@@ -9,10 +9,10 @@ type Props = {
   memo: Memo;
 };
 
-const MemoCard: React.FC<Props> = ({ memo }) => {
+const MemoCard: React.FC<Props> = ({ memo,className }) => {
   return (
-    <div className="max-w-xs border-2 border-gray-300 rounded-md p-3">
-      <div className="flex items-center">
+    <div className={`flex flex-col max-w-xs border-2 border-gray-300 rounded-md p-3 ${className}`}>
+      <div className="flex items-center mb-2">
         <div className="flex-grow">
           <Badge label={memo.Category.Name} className="w-fit" bgColor={memo.Category.BackgroundColorCode} color={memo.Category.ColorCode} />
         </div>
@@ -21,7 +21,7 @@ const MemoCard: React.FC<Props> = ({ memo }) => {
           <TrashIcon className="h-5 w-5 text-gray-500" />
         </div>
       </div>
-      <div className="mb-2">
+      <div className="mb-2 flex-grow">
         <div>
           <span className="font-bold text-sm">{memo.Title}</span>
         </div>

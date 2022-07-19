@@ -11,9 +11,11 @@ type Props = {
 const MemoIndex: React.FC<Props> = ({ memos }) => {
   return (
     <Layout>
-      {memos.map((memo) => {
-        return <MemoCard memo={memo} />;
-      })}
+      <div className="flex flex-wrap">
+        {memos.map((memo) => {
+          return <MemoCard className="mr-4 h-56 w-48" memo={memo} />;
+        })}
+      </div>
     </Layout>
   );
 };
