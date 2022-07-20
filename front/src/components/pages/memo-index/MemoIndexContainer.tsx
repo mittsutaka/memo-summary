@@ -12,7 +12,7 @@ const MemoIndexContainer: React.FC = () => {
   const { data, error } = useFetch<Memo[]>(endPoint);
 
   if (data) {
-    return <MemoIndex showModal={showModal} switchCreateModal={toggleCreateMemoModal} memos={data} className="text-3xl font-bold underline" modalId="createMemo"></MemoIndex>;
+    return <MemoIndex showModal={showModal} switchCreateModal={toggleCreateMemoModal} memos={data} className="text-3xl font-bold underline" ></MemoIndex>;
   }
   return <></>;
 };

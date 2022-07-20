@@ -9,7 +9,6 @@ type Props = {
 const btnPrimary = "bg-blue-800 hover:bg-blue-700 text-white";
 const btnSecondary = "bg-neutral-200 hover:bg-neutral-100 text-slate-800";
 
-// まだprimaryしかない
 const switchBtnClass = (variant?: string) => {
   let btnClassName = btnPrimary;
   switch (variant) {

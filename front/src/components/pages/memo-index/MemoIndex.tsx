@@ -8,12 +8,11 @@ import ModalCreateMemo from "./parts/ModalCreateMemo";
 type Props = {
   className?: string;
   memos: Memo[];
-  modalId: string;
   showModal: boolean;
   switchCreateModal: (isOpen: boolean) => void;
 };
 
-const MemoIndex: React.FC<Props> = ({ memos, modalId, showModal, switchCreateModal }) => {
+const MemoIndex: React.FC<Props> = ({ memos, showModal, switchCreateModal }) => {
   return (
     <Layout>
       <ModalCreateMemo title="メモを作成する" showModal={showModal} switchCreateModal={switchCreateModal}/>
