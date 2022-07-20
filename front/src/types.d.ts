@@ -1,4 +1,5 @@
 export type SelectBoxOption = {
-  Key: string;
-  Name: string;
+  key: string;
+  name: string;
+  value: string | number;
 };

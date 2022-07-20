@@ -9,7 +9,7 @@ type Props = {
 const Content: React.FC<Props> = ({ children, className }) => {
   return (
     <main className={className}>
-      <div className="rounded h-full p-8 bg-white">{children}</div>
+      <div className="overflow-auto rounded h-full p-8 bg-white">{children}</div>
     </main>
   );
 };
