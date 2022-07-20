@@ -9,16 +9,16 @@ type Props = {
   className?: string;
   memos: Memo[];
   showModal: boolean;
-  switchCreateModal: (isOpen: boolean) => void;
+  openCreateModal: (isOpen: boolean) => void;
 };
 
-const MemoIndex: React.FC<Props> = ({ memos, showModal, switchCreateModal }) => {
+const MemoIndex: React.FC<Props> = ({ memos, showModal, openCreateModal }) => {
   return (
     <Layout>
-      <ModalCreateMemo title="メモを作成する" showModal={showModal} switchCreateModal={switchCreateModal}/>
+      <ModalCreateMemo title="メモを作成する" showModal={showModal} openModal={openCreateModal}/>
       <div>
         <div className="mb-4">
-          <Button label="メモを作成する" onClick={() => switchCreateModal(true)} />
+          <Button label="メモを作成する" onClick={() => openCreateModal(true)} />
         </div>
         <div className="flex flex-wrap">
           {memos.map((memo) => {

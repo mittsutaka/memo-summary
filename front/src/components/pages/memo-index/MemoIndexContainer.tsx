@@ -7,12 +7,12 @@ const endPoint = `${process.env.REACT_APP_BACKEND_END_POINT}/memos?_expand=`;
 
 const MemoIndexContainer: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
-  const toggleCreateMemoModal = (isOpen: boolean): void => setShowModal(isOpen);
+  const openCreateMemoModal = (isOpen: boolean): void => setShowModal(isOpen);
 
   const { data, error } = useFetch<Memo[]>(endPoint);
 
   if (data) {
-    return <MemoIndex showModal={showModal} switchCreateModal={toggleCreateMemoModal} memos={data} className="text-3xl font-bold underline" ></MemoIndex>;
+    return <MemoIndex showModal={showModal} openCreateModal={openCreateMemoModal} memos={data} className="text-3xl font-bold underline" ></MemoIndex>;
   }
   return <></>;
 };

@@ -11,15 +11,15 @@ import SelectForm from "../../../ui-elements/SelectForm";
 type Props = {
   className?: string;
   title: string;
-  switchCreateModal: (isOpen: boolean) => void;
+  openModal: (isOpen: boolean) => void;
   showModal: boolean;
 };
 
 const categoriesEndPoint = `${process.env.REACT_APP_BACKEND_END_POINT}/categories`;
 
-const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, switchCreateModal }) => {
+const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openModal }) => {
   const { data, error } = useFetch<Category[]>(categoriesEndPoint);
-  
+
   const options = data?.map((category) => {
     const option: SelectBoxOption = {
       Key: String(category.Id),
@@ -29,19 +29,19 @@ const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, switchC
   });
 
   return (
-    <Modal show={showModal} onClose={() => switchCreateModal(false)}>
+    <Modal show={showModal} onClose={() => openModal(false)}>
       <Modal.Header>{title}</Modal.Header>
       <Modal.Body>
         <div className="space-y-4">
           <TextForm required label="タイトル" />
           <SelectForm label="フォルダ" options={options} required />
-          <TextAreaForm label="内容"/>
+          <TextAreaForm label="内容" />
         </div>
       </Modal.Body>
       <Modal.Footer>
         <div className="flex justify-end flex-grow">
           <div className="mr-4">
-            <Button variant="secondary" label="キャンセル" />
+            <Button variant="secondary" label="キャンセル" onClick={() => openModal(false)} />
           </div>
           <div>
             <Button variant="primary" label="作成" />
