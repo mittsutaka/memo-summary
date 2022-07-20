@@ -9,6 +9,8 @@ import TextField from "../../../ui-elements/TextField";
 import SelectField from "../../../ui-elements/SelectField";
 import TextAreaField from "../../../ui-elements/TextAreaField";
 import axios from "axios";
+import { useSWRConfig } from "swr";
+import { ApiEndPoint } from "../../../../configs/apiEndPoint";
 
 type Props = {
   className?: string;
@@ -24,12 +26,9 @@ type FormMemo = {
   updatedAt: Date;
 };
 
-const foldersEndPoint = `${process.env.REACT_APP_BACKEND_END_POINT}/folders`;
-
-const memoPostEndpoint = `${process.env.REACT_APP_BACKEND_END_POINT}/memos`;
-
 const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openModal }) => {
-  const { data, error } = useFetch<Folder[]>(foldersEndPoint);
+  const { data, error } = useFetch<Folder[]>(ApiEndPoint.getFolders);
+  const { mutate } = useSWRConfig();
 
   const options = data?.map((folder) => {
     const option: SelectBoxOption = {
@@ -44,18 +43,21 @@ const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openMod
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormMemo>();
 
   const onSubmit: SubmitHandler<FormMemo> = async (memo) => {
     axios.defaults.headers.common["Content-Type"] = "application/json";
     memo.updatedAt = new Date();
-    try{
-      const res = await axios.post(memoPostEndpoint, memo);
+    try {
+      const res = await axios.post(ApiEndPoint.postMemo, memo);
+      mutate(ApiEndPoint.getMemos);
       openModal(false);
+      reset();
+    } catch {
+      alert("作成に失敗しました。");
     }
-    catch{alert("作成に失敗しました。")}
-
   };
 
   return (
@@ -74,7 +76,14 @@ const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openMod
         <Modal.Footer>
           <div className="flex justify-end flex-grow">
             <div className="mr-4">
-              <Button variant="secondary" label="キャンセル" onClick={() => openModal(false)} />
+              <Button
+                variant="secondary"
+                label="キャンセル"
+                onClick={() => {
+                  openModal(false);
+                  reset();
+                }}
+              />
             </div>
             <div>
               <Button variant="primary" label="作成" type="submit" />

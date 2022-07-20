@@ -23,8 +23,8 @@ const MemoIndex: React.FC<Props> = ({ memos, showModal, openCreateModal }) => {
         <div className="flex flex-wrap">
           {memos.map((memo) => {
             return (
-              <div className="mr-4 mb-4">
-                <MemoCard className="h-56 w-48" key={memo.id} memo={memo} />
+              <div key={memo.id} className="mr-4 mb-4">
+                <MemoCard className="h-56 w-48" memo={memo} />
               </div>
             );
           })}
