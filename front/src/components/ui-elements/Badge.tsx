@@ -8,8 +8,9 @@ type Props = {
 };
 
 const Badge: React.FC<Props> = ({ bgColor, color, className, label }) => {
+  const style = { color: color, backgroundColor: bgColor };
   return (
-    <div className={`px-3 py-1 text-center text-xs ${className}`} style={{ color: color, backgroundColor: bgColor }}>
+    <div className={`px-3 py-0.5 text-center text-[11px] ${className}`} style={style}>
       {label}
     </div>
   );
