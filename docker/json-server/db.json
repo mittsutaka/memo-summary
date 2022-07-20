@@ -1,60 +1,45 @@
 {
-  "Memos": [
+  "memos": [
     {
-      "Id": 1,
-      "Title": "今日の晩御飯",
-      "Category": {
-        "Id": 1,
-        "Name": "お気に入り",
-        "BackgroundColorCode": "#FFF000",
-        "ColorCode": "#333333"
-      },
-      "Contents": "今日はカレーにしよう。",
-      "UpdatedAt":"2022/07/15 20:17:20"
+      "id": "1",
+      "title": "今日の晩御飯",
+      "folderId": "1",
+      "contents": "今日はカレーにしよう。",
+      "updatedAt": "2022-07-14T06:16:29.609Z"
     },
     {
-      "Id": 2,
-      "Title": "面接の技術課題何からやろうかな",
-      "Category": {
-        "Id": 2,
-        "Name": "作業中",
-        "BackgroundColorCode": "#629460",
-        "ColorCode": "#FFFFFF"
-      },
-      "Contents": "まずはデザインから考えようかな",
-      "UpdatedAt":"2022/07/16 20:17:20"
+      "id": "2",
+      "title": "面接の技術課題何からやろうかな",
+      "folderId": "2",
+      "contents": "まずはデザインから考えようかな",
+      "updatedAt": "2022-07-16T06:16:29.609Z"
     },
     {
-      "Id": 3,
-      "Title": "7月22日に芝刈りしよう",
-      "Category": {
-        "Id": 3,
-        "Name": "アーカイブ",
-        "BackgroundColorCode": "#DE3C3C",
-        "ColorCode": "#FFFFFF"
-      },
-      "Contents": "",
-      "UpdatedAt":"2022/07/13 20:17:20"
+      "id": "3",
+      "title": "7月22日に芝刈りしよう",
+      "folderId": "3",
+      "contents": "",
+      "updatedAt": "2022-07-15T06:16:29.609Z"
     }
   ],
-  "Categories": [
+  "folders": [
     {
-      "Id": 1,
-      "Name": "お気に入り",
-      "BackgroundColorCode": "#FFF000",
-      "ColorCode": "#333333"
+      "id": "1",
+      "name": "お気に入り",
+      "backgroundColorCode": "#FFF000",
+      "colorCode": "#333333"
     },
     {
-      "Id": 2,
-      "Name": "作業中",
-      "BackgroundColorCode": "#629460",
-      "ColorCode": "#FFFFFF"
+      "id": "2",
+      "name": "作業中",
+      "backgroundColorCode": "#629460",
+      "colorCode": "#FFFFFF"
     },
     {
-      "Id": 3,
-      "Name": "アーカイブ",
-      "BackgroundColorCode": "#DE3C3C",
-      "ColorCode": "#FFFFFF"
+      "id": "3",
+      "name": "アーカイブ",
+      "backgroundColorCode": "#DE3C3C",
+      "colorCode": "#FFFFFF"
     }
   ]
 }

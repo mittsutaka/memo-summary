@@ -3,7 +3,8 @@ import MemoIndex from "./MemoIndex";
 import { Memo } from "../../../models/memo/type";
 import useFetch from "../../../hooks/useFecth";
 
-const endPoint = `${process.env.REACT_APP_BACKEND_END_POINT}/memos?_expand=`;
+// ローカルと本番環境で切り替える必要ありなので他ファイルに移動したほうがよさそう
+const endPoint = `${process.env.REACT_APP_BACKEND_END_POINT}/memos?_expand=folder&_sort=updatedAt&_order=desc`;
 
 const MemoIndexContainer: React.FC = () => {
   const [showModal, setShowModal] = useState(false);

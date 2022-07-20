@@ -1,9 +1,9 @@
-import { Category } from "../category/type";
+import { Folder } from "../folder/type";
 
 export type Memo = {
-  Id: number;
-  Title: string;
-  Category: Category;
-  Contents?: string;
-  UpdatedAt: string;
+  id: number;
+  title: string;
+  folder: Folder;
+  contents?: string;
+  updatedAt: string;
 };

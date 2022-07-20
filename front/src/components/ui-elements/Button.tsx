@@ -22,9 +22,9 @@ const switchBtnClass = (variant?: string) => {
   return btnClassName;
 };
 
-const Button: React.FC<Props> = ({ className, label, variant, onClick }) => {
+const Button: React.FC<Props> = ({ className, label, variant, onClick, type = "button" }) => {
   return (
-    <button type="button" data-modal-toggle="createMemo" className={`${switchBtnClass(variant)} ${className} min-w-[120px] font-bold py-2 px-4 rounded`} onClick={onClick}>
+    <button type={type} className={`${switchBtnClass(variant)} ${className} min-w-[120px] font-bold py-2 px-4 rounded`} onClick={onClick}>
       {label}
     </button>
   );

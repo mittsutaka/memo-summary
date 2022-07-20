@@ -15,14 +15,18 @@ type Props = {
 const MemoIndex: React.FC<Props> = ({ memos, showModal, openCreateModal }) => {
   return (
     <Layout>
-      <ModalCreateMemo title="メモを作成する" showModal={showModal} openModal={openCreateModal}/>
+      <ModalCreateMemo title="メモを作成する" showModal={showModal} openModal={openCreateModal} />
       <div>
         <div className="mb-4">
           <Button label="メモを作成する" onClick={() => openCreateModal(true)} />
         </div>
         <div className="flex flex-wrap">
           {memos.map((memo) => {
-            return <MemoCard key={memo.Id} className="mr-4 h-56 w-48" memo={memo} />;
+            return (
+              <div className="mr-4 mb-4">
+                <MemoCard className="h-56 w-48" key={memo.id} memo={memo} />
+              </div>
+            );
           })}
         </div>
       </div>
