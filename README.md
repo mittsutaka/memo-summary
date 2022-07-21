@@ -26,12 +26,13 @@ http://localhost:3001
 
 ## エディターでコードを確認する際の注意点
 動作が重くなるためライブラリが入っているnode_modulesはコンテナ内とhostのボリュームにしかないので、エディターで確認する場合は
-コンテナとリモート接続をするか、ローカルでnpm installをしたほうがよいです。
+コンテナとリモート接続をするか、frontディレクトリでnpm installをしたほうがよいです。
 ```
+cd front
 npm install
 ```
 
-※node_modulesがないのでエディター上では下記のようにエラーが出る
+※node_modulesがないのでエディター上では下記のようにエラーが出る（実行はできる）
 ![image](https://user-images.githubusercontent.com/46466401/180251178-2cf011e1-dd3f-44a1-b82b-91693d6d4b38.png)
 
 
