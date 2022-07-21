@@ -5,7 +5,6 @@ import Button from "../../ui-elements/Button";
 import Dialog from "../../ui-elements/Dialog";
 import MemoCard from "./parts/MemoCard";
 import ModalUpsertMemo from "./parts/ModalUpsertMemo";
-import { SubmitHandler } from "react-hook-form";
 
 type Props = {
   className?: string;
@@ -15,16 +14,17 @@ type Props = {
   showDeleteDialog: boolean;
   openDeleteDialog: (isOpen: boolean, id?: string) => void;
   deleteMemo: () => void;
-  upsertMemoHandler: SubmitHandler<Memo>;
   isUpdate?: boolean;
+  selectedMemoId: string;
 };
 
 const deleteWarningMessage = "削除すると元に戻せませんがよろしいですか？";
 
-const MemoIndex: React.FC<Props> = ({ memos, showUpsertModal, openUpsertModal, showDeleteDialog, openDeleteDialog, deleteMemo, upsertMemoHandler, isUpdate }) => {
+const MemoIndex: React.FC<Props> = ({ memos, showUpsertModal, openUpsertModal, showDeleteDialog, openDeleteDialog, deleteMemo, isUpdate, selectedMemoId }) => {
   return (
     <Layout>
-      <ModalUpsertMemo showModal={showUpsertModal} openModal={openUpsertModal} upsertMemoHandler={upsertMemoHandler} isUpdate={isUpdate} />
+      {showUpsertModal && <ModalUpsertMemo showModal={showUpsertModal} openModal={openUpsertModal} isUpdate={isUpdate} selectedMemoId={selectedMemoId} />}
+
       {/* 何を削除するかを表示するようにしときたい */}
       <Dialog message={deleteWarningMessage} okButtonText="削除" cancelButtonText="キャンセル" show={showDeleteDialog} openDialog={openDeleteDialog} okClickEvent={deleteMemo} />
       <div>

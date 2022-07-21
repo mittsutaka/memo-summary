@@ -5,7 +5,6 @@ import useFetch from "../../../hooks/useFecth";
 import { ApiEndPoint } from "../../../configs/apiEndPoint";
 import axios from "axios";
 import { useSWRConfig } from "swr";
-import { useForm, SubmitHandler } from "react-hook-form";
 
 const MemoIndexContainer: React.FC = () => {
   const { mutate } = useSWRConfig();
@@ -43,19 +42,6 @@ const MemoIndexContainer: React.FC = () => {
       alert("削除に失敗しました。");
     }
   };
-  
-  const upsertMemoHandler: SubmitHandler<Memo> = async (memo) => {
-    axios.defaults.headers.common["Content-Type"] = "application/json";
-    memo.updatedAt = new Date();
-    const labelText = isUpdate ? "編集" : "作成";
-    try {
-      await axios.post(ApiEndPoint.postMemo, memo);
-      mutate(ApiEndPoint.getMemos);
-      setShowUpsertModal(false);
-    } catch {
-      alert(`${labelText}に失敗しました。`);
-    }
-  };
 
   const { data, error } = useFetch<Memo[]>(ApiEndPoint.getMemos);
 
@@ -69,8 +55,8 @@ const MemoIndexContainer: React.FC = () => {
         openDeleteDialog={openDeleteDialog}
         showDeleteDialog={showDeleteDialog}
         deleteMemo={deleteMemoAsync}
-        upsertMemoHandler={upsertMemoHandler}
         isUpdate={isUpdate}
+        selectedMemoId={selectedMemoId}
       ></MemoIndex>
     );
   }
