@@ -1,7 +1,7 @@
 import { Folder } from "../folder/type";
 
 export type Memo = {
-  id: number;
+  id: string;
   title: string;
   folder: Folder;
   contents?: string;

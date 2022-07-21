@@ -47,11 +47,11 @@ const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openMod
     formState: { errors },
   } = useForm<FormMemo>();
 
-  const onSubmit: SubmitHandler<FormMemo> = async (memo) => {
+  const createMemoAsync: SubmitHandler<FormMemo> = async (memo) => {
     axios.defaults.headers.common["Content-Type"] = "application/json";
     memo.updatedAt = new Date();
     try {
-      const res = await axios.post(ApiEndPoint.postMemo, memo);
+      await axios.post(ApiEndPoint.postMemo, memo);
       mutate(ApiEndPoint.getMemos);
       openModal(false);
       reset();
@@ -62,7 +62,7 @@ const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openMod
 
   return (
     <Modal show={showModal} onClose={() => openModal(false)}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(createMemoAsync)}>
         <Modal.Header>{title}</Modal.Header>
         <Modal.Body>
           <div className="space-y-4">
