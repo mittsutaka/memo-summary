@@ -4,35 +4,38 @@ import Layout from "../../layouts/layout/Layout";
 import Button from "../../ui-elements/Button";
 import Dialog from "../../ui-elements/Dialog";
 import MemoCard from "./parts/MemoCard";
-import ModalCreateMemo from "./parts/ModalCreateMemo";
+import ModalUpsertMemo from "./parts/ModalUpsertMemo";
+import { SubmitHandler } from "react-hook-form";
 
 type Props = {
   className?: string;
   memos: Memo[];
-  showCreateModal: boolean;
-  openCreateModal: (isOpen: boolean) => void;
+  showUpsertModal: boolean;
+  openUpsertModal: (isOpen: boolean, isUpdate?: boolean, id?: string) => void;
   showDeleteDialog: boolean;
   openDeleteDialog: (isOpen: boolean, id?: string) => void;
   deleteMemo: () => void;
+  upsertMemoHandler: SubmitHandler<Memo>;
+  isUpdate?: boolean;
 };
 
 const deleteWarningMessage = "削除すると元に戻せませんがよろしいですか？";
 
-const MemoIndex: React.FC<Props> = ({ memos, showCreateModal, openCreateModal, showDeleteDialog, openDeleteDialog, deleteMemo}) => {
+const MemoIndex: React.FC<Props> = ({ memos, showUpsertModal, openUpsertModal, showDeleteDialog, openDeleteDialog, deleteMemo, upsertMemoHandler, isUpdate }) => {
   return (
     <Layout>
-      <ModalCreateMemo title="メモを作成する" showModal={showCreateModal} openModal={openCreateModal} />
+      <ModalUpsertMemo showModal={showUpsertModal} openModal={openUpsertModal} upsertMemoHandler={upsertMemoHandler} isUpdate={isUpdate} />
       {/* 何を削除するかを表示するようにしときたい */}
       <Dialog message={deleteWarningMessage} okButtonText="削除" cancelButtonText="キャンセル" show={showDeleteDialog} openDialog={openDeleteDialog} okClickEvent={deleteMemo} />
       <div>
         <div className="mb-4">
-          <Button label="メモを作成する" onClick={() => openCreateModal(true)} />
+          <Button label="メモを作成する" onClick={() => openUpsertModal(true)} />
         </div>
         <div className="flex flex-wrap">
           {memos.map((memo) => {
             return (
               <div key={memo.id} className="mr-4 mb-4">
-                <MemoCard className="h-56 w-48" memo={memo} deleteEvent={() => openDeleteDialog(true, memo.id)} />
+                <MemoCard className="h-56 w-48" memo={memo} updateEvent={() => openUpsertModal(true, true, memo.id)} deleteEvent={() => openDeleteDialog(true, memo.id)} />
               </div>
             );
           })}

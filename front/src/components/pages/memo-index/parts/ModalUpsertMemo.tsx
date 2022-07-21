@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modal } from "flowbite-react";
 import Button from "../../../ui-elements/Button";
 import { Folder } from "../../../../models/folder/type";
@@ -8,27 +8,22 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import TextField from "../../../ui-elements/TextField";
 import SelectField from "../../../ui-elements/SelectField";
 import TextAreaField from "../../../ui-elements/TextAreaField";
-import axios from "axios";
-import { useSWRConfig } from "swr";
 import { ApiEndPoint } from "../../../../configs/apiEndPoint";
+import { Memo } from "../../../../models/memo/type";
 
 type Props = {
   className?: string;
-  title: string;
-  openModal: (isOpen: boolean) => void;
+  openModal: (isOpen: boolean, isUpdate?: boolean, id?: string) => void;
   showModal: boolean;
+  isUpdate?: boolean;
+  defaultValues?: Memo;
+  upsertMemoHandler: SubmitHandler<Memo>;
 };
 
-type FormMemo = {
-  title: string;
-  folderId: number;
-  contents: string;
-  updatedAt: Date;
-};
-
-const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openModal }) => {
+const ModalUpsertMemo: React.FC<Props> = ({ className, showModal, openModal, isUpdate = false, defaultValues, upsertMemoHandler }) => {
   const { data, error } = useFetch<Folder[]>(ApiEndPoint.getFolders);
-  const { mutate } = useSWRConfig();
+  const labelText = isUpdate ? "編集" : "作成";
+  const title = `メモを${labelText}する`;
 
   const options = data?.map((folder) => {
     const option: SelectBoxOption = {
@@ -42,27 +37,17 @@ const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openMod
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
-  } = useForm<FormMemo>();
-
-  const createMemoAsync: SubmitHandler<FormMemo> = async (memo) => {
-    axios.defaults.headers.common["Content-Type"] = "application/json";
-    memo.updatedAt = new Date();
-    try {
-      await axios.post(ApiEndPoint.postMemo, memo);
-      mutate(ApiEndPoint.getMemos);
-      openModal(false);
-      reset();
-    } catch {
-      alert("作成に失敗しました。");
-    }
-  };
+  } = useForm<Memo>({
+    defaultValues: {
+      title: "",
+    },
+  });
 
   return (
     <Modal show={showModal} onClose={() => openModal(false)}>
-      <form onSubmit={handleSubmit(createMemoAsync)}>
+      <form onSubmit={handleSubmit(upsertMemoHandler)}>
         <Modal.Header>{title}</Modal.Header>
         <Modal.Body>
           <div className="space-y-4">
@@ -86,7 +71,7 @@ const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openMod
               />
             </div>
             <div>
-              <Button variant="primary" label="作成" type="submit" />
+              <Button variant="primary" label={labelText} type="submit" />
             </div>
           </div>
         </Modal.Footer>
@@ -95,4 +80,4 @@ const ModalCreateMemo: React.FC<Props> = ({ className, title, showModal, openMod
   );
 };
 
-export default ModalCreateMemo;
+export default ModalUpsertMemo;

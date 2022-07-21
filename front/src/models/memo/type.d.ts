@@ -4,6 +4,7 @@ export type Memo = {
   id: string;
   title: string;
   folder: Folder;
+  folderId: string;
   contents?: string;
-  updatedAt: string;
+  updatedAt: Date;
 };

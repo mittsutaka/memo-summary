@@ -8,10 +8,10 @@ type Props = {
   className?: string;
   memo: Memo;
   deleteEvent: () => void;
+  updateEvent: () => void;
 };
 
-const MemoCard: React.FC<Props> = ({ memo, className, deleteEvent }) => {
-
+const MemoCard: React.FC<Props> = ({ memo, className, deleteEvent, updateEvent }) => {
   return (
     <div className={`flex flex-col max-w-xs border-2 border-gray-300 rounded-md p-3 ${className}`}>
       <div className="flex items-center mb-2">
@@ -19,11 +19,11 @@ const MemoCard: React.FC<Props> = ({ memo, className, deleteEvent }) => {
           <Badge label={memo.folder?.name} className="w-fit" bgColor={memo.folder?.backgroundColorCode} color={memo.folder?.colorCode} />
         </div>
         <div className="flex flex-grow justify-end">
-          <div className="cursor-pointer hover:bg-slate-200 rounded-full p-1 mr-0.5">
-            <PencilIcon className="h-5 w-5 text-gray-500 cursor-pointer" />
+          <div className="cursor-pointer hover:bg-slate-200 rounded-full p-1 mr-0.5" onClick={updateEvent}>
+            <PencilIcon className="h-5 w-5 text-gray-500" />
           </div>
           <div className="cursor-pointer hover:bg-slate-200 rounded-full p-1" onClick={deleteEvent}>
-            <TrashIcon className="h-5 w-5 text-gray-500 " />
+            <TrashIcon className="h-5 w-5 text-gray-500" />
           </div>
         </div>
       </div>
