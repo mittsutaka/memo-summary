@@ -32,7 +32,7 @@ const MemoCard: React.FC<Props> = ({ memo, className, deleteEvent }) => {
           <span className="font-bold text-sm line-clamp-2">{memo.title}</span>
         </div>
         <div>
-          <span className="text-xs line-clamp-6">{memo.contents}</span>
+          <span className="text-xs line-clamp-6 whitespace-pre-wrap">{memo.contents}</span>
         </div>
       </div>
       <div className="flex justify-end">
