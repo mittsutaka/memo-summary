@@ -8,9 +8,10 @@ type Props = {
   required?: boolean;
   register: UseFormRegister<any>;
   name: string;
+  rows?: number;
 };
 
-const TextAreaField: React.FC<Props> = ({ className, label, register, name, required = false }) => {
+const TextAreaField: React.FC<Props> = ({ className, label, register, name, required = false, rows }) => {
   return (
     <div>
       <div className="mb-2 block">
@@ -19,7 +20,7 @@ const TextAreaField: React.FC<Props> = ({ className, label, register, name, requ
         </span>
         {required && <span className="text-red-600">*</span>}
       </div>
-      <Textarea id="contents" placeholder="" rows={4} {...register(name, { required })}/>
+      <Textarea id="contents" placeholder="" rows={rows} {...register(name, { required })} />
     </div>
   );
 };

@@ -84,7 +84,7 @@ const ModalUpsertMemo: React.FC<Props> = ({ className, showModal, openModal, isU
               {errors.title && <span style={{ color: "red" }}>タイトルは必須です。</span>}
               <SelectField label="フォルダ" options={options} required register={register} name="folderId" />
               {errors.folderId && <span style={{ color: "red" }}>フォルダは必須です。</span>}
-              <TextAreaField label="内容" register={register} name="contents" />
+              <TextAreaField label="内容" register={register} name="contents" rows={8}/>
             </div>
           </Modal.Body>
           <Modal.Footer>
