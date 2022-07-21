@@ -56,7 +56,6 @@ const ModalUpsertMemo: React.FC<Props> = ({ className, showModal, openModal, isU
     }
     
     const upsertMemoHandler: SubmitHandler<Memo> = async (memo) => {
-      axios.defaults.headers.common["Content-Type"] = "application/json";
       memo.updatedAt = new Date();
       const url = isUpdate ? `${ApiEndPoint.postMemo}/${selectedMemoId}` : ApiEndPoint.postMemo;
 
