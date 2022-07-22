@@ -1,7 +1,18 @@
 # 概要
 メモ管理アプリケーション
 
+【front】React(TypeScript)
+
+【back】 JsonServer　※モックサーバ
+
 ## 実行方法
+
+docker-compose を使用します。
+
+docker-composeのインストール方法は下記参照
+
+https://docs.docker.jp/compose/install/index.html
+
 ### 1. 環境ファイルの作成
 ```
 cp front/.env.example front/.env
