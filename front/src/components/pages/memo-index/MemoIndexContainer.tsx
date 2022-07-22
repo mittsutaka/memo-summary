@@ -37,6 +37,8 @@ const MemoIndexContainer: React.FC = () => {
       await axios.delete(`${ApiEndPoint.baseUrl}/memos/${selectedMemoId}`);
       mutate(ApiEndPoint.getMemos);
       openDeleteDialog(false);
+
+      //Toast使いたい
       alert("削除しました。");
     } catch {
       alert("削除に失敗しました。");
@@ -59,6 +61,8 @@ const MemoIndexContainer: React.FC = () => {
         selectedMemoId={selectedMemoId}
       ></MemoIndex>
     );
+  } else if (error) {
+    return <>エラーが発生しました。</>;
   }
   return <></>;
 };

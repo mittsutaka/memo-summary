@@ -13,7 +13,7 @@ type Props = {
 
 const TextAreaField: React.FC<Props> = ({ className, label, register, name, required = false, rows }) => {
   return (
-    <div>
+    <div className={className}>
       <div className="mb-2 block">
         <span className="mr-2">
           <Label htmlFor="contents" value={label} />

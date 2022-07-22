@@ -18,7 +18,6 @@ type Props = {
   openModal: (isOpen: boolean, isUpdate?: boolean, id?: string) => void;
   showModal: boolean;
   isUpdate?: boolean;
-  defaultValues?: Memo;
   selectedMemoId: string;
 };
 

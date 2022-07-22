@@ -1,5 +1,6 @@
 const baseUrl = process.env.REACT_APP_BACKEND_END_POINT;
 
+// 環境に応じて切り替えるようにしたい
 export const ApiEndPoint = {
   getFolders: `${baseUrl}/folders`,
   getMemo: `${baseUrl}/memos/`,
