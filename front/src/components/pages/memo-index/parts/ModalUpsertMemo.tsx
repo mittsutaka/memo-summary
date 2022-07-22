@@ -21,8 +21,10 @@ type Props = {
   selectedMemoId: string;
 };
 
-const ModalUpsertMemo: React.FC<Props> = ({ className, showModal, openModal, isUpdate = false, selectedMemoId }) => {
+const ModalUpsertMemo: React.FC<Props> = ({ className, showModal, openModal, selectedMemoId, isUpdate = false }) => {
   const { data: folders } = useFetch<Folder[]>(ApiEndPoint.getFolders);
+
+  // 新規作成のときにもfetchしてしまう。。。
   const { data: memo } = useFetch<Memo>(`${ApiEndPoint.getMemo}/${selectedMemoId}`);
   const labelText = isUpdate ? "編集" : "作成";
   const title = `メモを${labelText}する`;
@@ -45,15 +47,16 @@ const ModalUpsertMemo: React.FC<Props> = ({ className, showModal, openModal, isU
     formState: { errors },
   } = useForm<Memo>();
 
-  if (!isUpdate || memo) {
-
+  if (isUpdate && !memo) {
+    return <></>;
+  } else {
     // もっといい書き方あると思う。
-    if(isUpdate){
+    if (isUpdate) {
       setValue("contents", memo?.contents);
       setValue("title", String(memo?.title));
       setValue("folderId", String(memo?.folderId));
     }
-    
+
     const upsertMemoHandler: SubmitHandler<Memo> = async (memo) => {
       memo.updatedAt = new Date();
       const url = isUpdate ? `${ApiEndPoint.postMemo}/${selectedMemoId}` : ApiEndPoint.postMemo;
@@ -83,7 +86,7 @@ const ModalUpsertMemo: React.FC<Props> = ({ className, showModal, openModal, isU
               {errors.title && <span style={{ color: "red" }}>タイトルは必須です。</span>}
               <SelectField label="フォルダ" options={options} required register={register} name="folderId" />
               {errors.folderId && <span style={{ color: "red" }}>フォルダは必須です。</span>}
-              <TextAreaField label="内容" register={register} name="contents" rows={8}/>
+              <TextAreaField label="内容" register={register} name="contents" rows={8} />
             </div>
           </Modal.Body>
           <Modal.Footer>
@@ -106,8 +109,6 @@ const ModalUpsertMemo: React.FC<Props> = ({ className, showModal, openModal, isU
         </form>
       </Modal>
     );
-  } else {
-    return <></>;
   }
 };
 
